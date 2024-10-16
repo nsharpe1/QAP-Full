@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeaderBoard</title>
+</head>
+<body>
+
+
+<h1>Leaderboard</h1>
+<ul>
+    <br/>
+    <% leaderboard.forEach(function(leaderboard) { %>
+        <li><%= leaderboard.otherQuestions %> - <%= leaderboard.date %></li>
+    <% }); %>
+
+</ul>
+
+</body>
+</html>
