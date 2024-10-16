@@ -14,16 +14,14 @@ let leaderboard = [];
 
 //Some routes required for full functionality are missing here. Only get routes should be required
 app.get('/', (request, response) => {
-    response.render('index');
+    console.log(leaderboard.at(0))
+    let lastStreak = leaderboard[1];
+    response.render('index', { lastStreak: lastStreak });
 });
 
 app.get('/quiz', (request, response) => {
     currentQuestion = getQuestion();
-    if(isCorrectAnswer(currentQuestion)){
-        numberOfQuestions++;
-    } else {
-        numberOfQuestions = 0;
-    }
+
     response.render('quiz', { numberOfQuestions: numberOfQuestions, currentQuestion: currentQuestion, otherQuestions: otherQuestions});
 });
 
@@ -32,18 +30,22 @@ app.post('/quiz', (request, response) => {
     const { answer } = request.body;
 
     const userInput = answer;
-    
+
     console.log(`Answer: ${userInput}`);
 
     if(isCorrectAnswer(userInput)){
         console.log('Correct');
         numberOfQuestions++;
-        console.log(numberOfQuestions);
+        console.log(numberOfQuestions)
     } else {
         console.log('Incorrect');
-        otherQuestions++;
-        leaderboard.push({otherQuestions: otherQuestions, date: new Date()});
+
+        leaderboard.push({ numberOfQuestions: numberOfQuestions, date:new Date()});
+        numberOfQuestions = 0;
+        
+
         console.log(otherQuestions);
+        console.log(numberOfQuestions);
         response.redirect('/completion');
 
     }
@@ -54,13 +56,13 @@ app.post('/quiz', (request, response) => {
 });
 
 app.get('/leaderboard', (request, response) => {
-    const topStreak = leaderboard.sort((a, b) => b.otherQuestions - a.otherQuestions).slice(0, 10);
+    const topStreak = leaderboard.sort((a, b) => b.numberOfQuestions - a.numberOfQuestions).slice(0, 10);
     response.render('leaderboard', { leaderboard: topStreak });
 })
 
 
 app.get('/completion', (request, response) => {
-    response.render('completion', { otherQuestions: otherQuestions });
+    response.render('completion', { otherQuestions: otherQuestions, numberOfQuestions: numberOfQuestions });
 });
 
 // Start the server

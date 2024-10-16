@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LeaderBoard</title>
+    <title>Leaderboard</title>
 </head>
 <body>
 
@@ -13,8 +13,9 @@
 <h1>Leaderboard</h1>
 <ul>
     <br/>
+    <br/>
     <% leaderboard.forEach(function(leaderboard) { %>
-        <li><%= leaderboard.otherQuestions %> - <%= leaderboard.date %></li>
+        <li><%= leaderboard.numberOfQuestions %> - <%= leaderboard.date %></li>
     <% }); %>
 
 </ul>
