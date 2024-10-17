@@ -18,15 +18,12 @@ describe("Test for getQuestion", () => {
     })
 });
 
-describe('Test 1 for isCorrectAnswer', () => {
+describe('Tests for isCorrectAnswer', () => {
     test('Correct answer', () => {
         expect(isCorrectAnswer('17')).toBe(true);
     });
-});
-
-describe('Test 2 for isCorrectAnswer', () => {
     test('Incorrect answer', () => {
-        expect(isCorrectAnswer('8')).toBe(false);
+        const question = getQuestion();
+        expect(isCorrectAnswer(question,'900')).toBe(false);
     });
 });
-

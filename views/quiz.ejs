@@ -3,7 +3,8 @@
 
     <!-- Display question or whatever else here -->
     <h1>Math Quiz</h1>
-    <p>Answer the question below:</p>
+    <p>Go back to home page and press start quiz to get a new question</p>
+    <p><br/>Answer the question below:</p>
     <p><br/><%= currentQuestion.text %></p>
 
     <form action="/quiz" method="POST">
@@ -12,6 +13,7 @@
         <input type="text" id="answer" name="answer" required>
         <button type="submit">Submit</button>
         <p><br />Streak: <%= numberOfQuestions %></p>
+
     </form>
 </body>
 </html>

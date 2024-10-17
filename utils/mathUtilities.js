@@ -25,27 +25,12 @@ function getQuestion() {
  * @param {*} answer The potential answer
  * @returns {boolean} True if the answer was correct, false otherwise.
  */
-function isCorrectAnswer(questionName) {
-    if(questionName == '17') {
-        return questionName === '17';
-    }
-    if(questionName == '8') {
-        return questionName === '8';
-    }
-    if(questionName == '30') {
-        return questionName === '30';
-    }
-    if(questionName == '23') {
-        return questionName === '23';
-    }
-    if(questionName == '27') {
-        return questionName === '27';
-    }
-    if(questionName == '78') {
-        return questionName === '78';
-    }
-    if(questionName == '19') {
-        return questionName === '19';
+function isCorrectAnswer(question,questionName) {
+
+    if(question.answer === questionName){
+        return true
+    } else {
+        return false
     }
 }
 
